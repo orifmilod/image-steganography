@@ -1,4 +1,5 @@
 #include <_types/_uint8_t.h>
+#include <cstring>
 #define STB_IMAGE_IMPLEMENTATION
 #define STB_IMAGE_WRITE_IMPLEMENTATION
 
@@ -7,6 +8,9 @@
 #include "stb_image_write.h"
 #include <iostream>
 
+constexpr float RED_COLOR_WEIGHT = 0.2126;
+constexpr float GREEN_COLOR_WEIGHT = 0.7152;
+constexpr float BLUE_COLOR_WEIGHT = 0.0722;
 
 Image::Image(int width, int height, int channels)
     : m_width(width), m_height(height), m_channels(channels) {
@@ -90,4 +94,39 @@ ImageType get_file_type(const std::string &filename) {
 
   std::cerr << "Error getting image extension" << std::endl;
   return ImageType::UNKNOWN;
+}
+
+Image &Image::grayscale_average() {
+  if (m_channels < 3) {
+    std::cout << "Less than 3 channels found in the image (assuming that image "
+                 "is grayscaled) \n";
+    return *this;
+  }
+
+  for (int i = 0; i < m_data_size; i += m_channels) {
+    int avg_gray = (m_data[i] + m_data[i + 1] + m_data[i + 2]) / 3;
+
+    // set all the 3 color to their average
+    memset(m_data + i, avg_gray, 3);
+  }
+  return *this;
+}
+
+Image &Image::grayscale_luminance() {
+  if (m_channels < 3) {
+    std::cout << "Less than 3 channels found in the image (assuming that image "
+                 "is grayscaled) \n";
+    return *this;
+  }
+
+  for (int i = 0; i < m_data_size; i += m_channels) {
+    int avg_weighted =
+        (RED_COLOR_WEIGHT * m_data[i] + GREEN_COLOR_WEIGHT * m_data[i + 1] +
+         BLUE_COLOR_WEIGHT * m_data[i + 2]) /
+        3;
+
+    // set all the 3 color to their average
+    memset(m_data + i, avg_weighted, 3);
+  }
+  return *this;
 }

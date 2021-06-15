@@ -8,5 +8,13 @@
 using namespace std;
 
 int main() {
-  Image img("cat.png");
+  Image img("img/cosmos.png");
+
+  Image avg_img = img;
+  avg_img.grayscale_average();
+  avg_img.write("grayscaled.png");
+
+  Image luminance = img;
+  luminance.grayscale_luminance();
+  luminance.write("grayscaled_lum.png");
 }
