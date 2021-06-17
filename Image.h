@@ -23,6 +23,10 @@ inline const char *to_string(ImageType img_type) {
   case ImageType::UNKNOWN:
     return "UNKNOWN";
   }
+  // throw std::invalid_argument(
+  // "Code error,  enum not suppored" +
+  // 3 std::to_string(
+  // static_cast<std::underlying_type<Type>::type>(type)));
   return "UNKNOWN";
 }
 
@@ -69,4 +73,6 @@ public:
    */
 
   Image &grayscale_luminance();
+
+  Image &color_mask(float red, float green, float blue);
 };

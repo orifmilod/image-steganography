@@ -130,3 +130,19 @@ Image &Image::grayscale_luminance() {
   }
   return *this;
 }
+
+Image &Image::color_mask(float red, float green, float blue) {
+  if (m_channels < 3) {
+    std::cout << "Less than 3 channels found in the image (assuming that image "
+                 "is grayscaled) \n";
+    return *this;
+  }
+
+  for (int i = 0; i < m_data_size; i += m_channels) {
+    m_data[i] *= red;
+    m_data[i + 1] *= green;
+    m_data[i + 2] *= blue;
+  }
+
+  return *this;
+}
