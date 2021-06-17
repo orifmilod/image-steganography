@@ -11,7 +11,7 @@
 constexpr float RED_COLOR_WEIGHT = 0.2126;
 constexpr float GREEN_COLOR_WEIGHT = 0.7152;
 constexpr float BLUE_COLOR_WEIGHT = 0.0722;
-
+using namespace Steg;
 Image::Image(int width, int height, int channels)
     : m_width(width), m_height(height), m_channels(channels) {
   set_data_size();
@@ -71,7 +71,7 @@ bool Image::write(const std::string &filename) {
 
 void Image::set_data_size() { m_data_size = m_height * m_width * m_channels; }
 
-ImageType get_file_type(const std::string &filename) {
+ImageType Steg::get_file_type(const std::string &filename) {
   const char *extension = strrchr(filename.c_str(), '.');
 
   if (extension != NULL) {

@@ -1,12 +1,15 @@
 #pragma once
 
+#include "Image.h"
 #include <string>
 
-class StegCoding {
+namespace Steg {
+
+class Coding {
 
 public:
-  void LSB_encode(const std::string &imageName, const std::string &message);
-  void LSB_decode(const std::string &imageName);
+  void LSB_encode(const Image &image, const std::string &message);
+  void LSB_decode(const Image &image);
 
   void LSB_encode_odd(const std::string &imageName, const std::string &message);
   void LSB_decode_odd(const std::string &imageName);
@@ -33,3 +36,5 @@ public:
                                const std::string &message);
   void LSB_decode_magic_square(const std::string &imageName);
 };
+
+} // namespace Steg

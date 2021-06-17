@@ -1,3 +1,5 @@
+#pragma once
+
 #include <_types/_uint8_t.h>
 #include <cstddef>
 #include <cstring>
@@ -5,7 +7,10 @@
 #include <string.h>
 #include <string>
 
+namespace Steg {
+
 enum class ImageType { PNG, JPG, BMP, TGA, UNKNOWN };
+
 inline const char *to_string(ImageType img_type) {
   switch (img_type) {
   case ImageType::PNG:
@@ -76,3 +81,5 @@ public:
 
   Image &color_mask(float red, float green, float blue);
 };
+
+} // namespace Steg
