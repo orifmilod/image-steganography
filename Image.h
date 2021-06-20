@@ -28,10 +28,6 @@ inline const char *to_string(ImageType img_type) {
   case ImageType::UNKNOWN:
     return "UNKNOWN";
   }
-  // throw std::invalid_argument(
-  // "Code error,  enum not suppored" +
-  // 3 std::to_string(
-  // static_cast<std::underlying_type<Type>::type>(type)));
   return "UNKNOWN";
 }
 
@@ -51,6 +47,13 @@ public:
   Image(int width, int height, int channels);
   Image(const Image &image);
   ~Image();
+
+  // Getters
+  int get_channels() const;
+  int get_data_size() const;
+  int get_height() const;
+  int get_width() const;
+  const uint8_t *const get_data() const;
 
   bool read(const std::string &filename);
 

@@ -3,6 +3,13 @@
 #include <iostream>
 #include <string>
 
-using namespace std;
+using namespace Steg;
+Status Coding::LSB_encode(const Image &image, const std::string &message) {
+  std::cout << "Encoding stuff: " << message << std::endl;
 
-void Steg::Coding::LSB_encode(const Image &image, const std::string &message) {}
+  for (int i = 0; i < image.get_data_size(); i++) {
+    // TODO: encode the message
+  }
+
+  return Status::SUCCESS;
+}

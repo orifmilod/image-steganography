@@ -12,6 +12,7 @@ constexpr float RED_COLOR_WEIGHT = 0.2126;
 constexpr float GREEN_COLOR_WEIGHT = 0.7152;
 constexpr float BLUE_COLOR_WEIGHT = 0.0722;
 using namespace Steg;
+
 Image::Image(int width, int height, int channels)
     : m_width(width), m_height(height), m_channels(channels) {
   set_data_size();
@@ -146,3 +147,9 @@ Image &Image::color_mask(float red, float green, float blue) {
 
   return *this;
 }
+
+int Image::get_width() const { return m_width; }
+int Image::get_height() const { return m_height; }
+int Image::get_channels() const { return m_channels; }
+int Image::get_data_size() const { return m_data_size; }
+const uint8_t *const Image::get_data() const { return m_data; }
