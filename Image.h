@@ -4,7 +4,6 @@
 #include <cstddef>
 #include <cstring>
 #include <iostream>
-#include <string.h>
 #include <string>
 
 namespace Steg {
@@ -35,7 +34,6 @@ ImageType get_file_type(const std::string &filename);
 
 class Image {
 private:
-  uint8_t *m_data = nullptr;
   size_t m_data_size = 0;
   int m_width, m_height;
   int m_channels;
@@ -43,6 +41,7 @@ private:
   void set_data_size();
 
 public:
+  uint8_t *m_data = nullptr;
   Image(const std::string &filename);
   Image(int width, int height, int channels);
   Image(const Image &image);
@@ -53,7 +52,6 @@ public:
   int get_data_size() const;
   int get_height() const;
   int get_width() const;
-  const uint8_t *const get_data() const;
 
   bool read(const std::string &filename);
 

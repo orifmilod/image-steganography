@@ -152,4 +152,3 @@ int Image::get_width() const { return m_width; }
 int Image::get_height() const { return m_height; }
 int Image::get_channels() const { return m_channels; }
 int Image::get_data_size() const { return m_data_size; }
-const uint8_t *const Image::get_data() const { return m_data; }

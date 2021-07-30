@@ -8,7 +8,12 @@ namespace Steg {
 
 enum class Status { SUCCESS, FAIL, UNKNOWN };
 
-inline const char *to_string(Status status) {
+struct Constant {
+  static const int ENCODE_SIZE = 64;
+};
+
+inline const char *
+to_string(Status status) {
   switch (status) {
   case Status::SUCCESS:
     return "SUCCESS";
@@ -22,7 +27,6 @@ inline const char *to_string(Status status) {
 };
 
 class Coding {
-
 public:
   Status LSB_encode(const Image &image, const std::string &message);
   Status LSB_decode(const Image &image);
