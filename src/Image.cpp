@@ -1,11 +1,10 @@
-#include <_types/_uint8_t.h>
-#include <cstring>
+#include <stdint.h>
+#include <string.h>
 #define STB_IMAGE_IMPLEMENTATION
 #define STB_IMAGE_WRITE_IMPLEMENTATION
 
 #include "Image.h"
-#include "stb_image.h"
-#include "stb_image_write.h"
+#include "stb/stb_image.h"
 #include <iostream>
 
 constexpr float RED_COLOR_WEIGHT = 0.2126;
